@@ -6,37 +6,41 @@ export type CounterType = {
     getIncreaseCounter: (counter: number) => void
     getResetCounter: () => void
     counter: number
+    minValue: number
+    maxValue: number
 }
 
 
 function App() {
 
-    const [counter, setCounter] = useState(0)
+    const minValue = 0;
+    const maxValue = 5;
+
+    const [counter, setCounter] = useState(minValue)
 
     const getIncreaseCounter = (counter: number) => {
         setCounter(counter + 1)
     }
-
     const getResetCounter = () => {
-        setCounter(0)
+        setCounter(minValue)
     }
 
 
+    return (
+        <div className="App">
 
+            <div className="counter">
+                <Counter
+                    getIncreaseCounter={getIncreaseCounter}
+                    getResetCounter={getResetCounter}
+                    counter={counter}
+                    maxValue={maxValue}
+                    minValue={minValue}
+                />
+            </div>
 
-  return (
-    <div className="App">
-
-        <div className='counter'>
-            <Counter
-            getIncreaseCounter={getIncreaseCounter}
-            getResetCounter={getResetCounter}
-            counter={counter}
-        />
         </div>
-
-    </div>
-  );
+    );
 }
 
 export default App;
