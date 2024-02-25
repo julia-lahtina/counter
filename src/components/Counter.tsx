@@ -2,21 +2,23 @@ import React from 'react';
 import {Button} from './Button';
 import {CounterType} from '../App';
 
-export const Counter = ({getResetCounter, getIncreaseCounter, counter}: CounterType) => {
+export const Counter = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue}: CounterType) => {
 
-    const disabledButtonReset = counter === 0;
-    const disabledButtonInc = counter === 5;
+    const disabledButtonReset = counter === minValue;
+    const disabledButtonInc = counter === maxValue;
 
     return (
         <div className={'wrapper'}>
-            <div className={counter===5 ? 'counter-style' : 'black'}>{counter}</div>
+            <div className={'counter-wrapper'}>
+                <span className={counter === maxValue ? 'counter-style' : 'white'}>{counter}</span>
+            </div>
             <div className={'btn-wrapper'}>
                 <Button
-                callBack={() => getIncreaseCounter(counter)}
-                isDisabled={disabledButtonInc}
-                className={disabledButtonInc ? 'disabledButton' : 'activeButton'}
-                title={'inc'}
-            />
+                    callBack={() => getIncreaseCounter(counter)}
+                    isDisabled={disabledButtonInc}
+                    className={disabledButtonInc ? 'disabledButton' : 'activeButton'}
+                    title={'inc'}
+                />
                 <Button
                     callBack={getResetCounter}
                     isDisabled={disabledButtonReset}
