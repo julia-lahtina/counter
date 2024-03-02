@@ -8,7 +8,7 @@ export const Counter = ({getResetCounter, getIncreaseCounter, counter, maxValue,
     const disabledButtonInc = counter === maxValue;
 
     return (
-        <div className={'wrapper'}>
+        <div className={'counter'}>
             <div className={'counter-wrapper'}>
                 <span className={counter === maxValue ? 'counter-style' : 'white'}>{counter}</span>
             </div>
