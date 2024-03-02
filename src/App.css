@@ -36,13 +36,16 @@ body {
 }
 
 div {
-  font-size: 40px;
-  color: #0bd1fc;
+    font-size: 40px;
+    color: #0bd1fc;
 }
 
-.counter-style {
+.counter-style,
+.incorrectValue {
     color: red;
+    font-size: 20px;
 }
+
 
 .disabledButton {
     opacity: 0.5;
@@ -92,4 +95,17 @@ input {
     height: 15px;
     border: 2px solid #0bd1fc;
     border-radius: 5px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.negativ-number-input {
+    border: 2px solid red;
+    background-color: #ef9797;
+
+    &:focus {
+        outline: none;
+    }
 }
