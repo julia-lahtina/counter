@@ -1,5 +1,5 @@
 body {
-    background-color: #1486af;
+    background-color: #1d273b;
 }
 
 .App {
@@ -7,23 +7,28 @@ body {
     justify-content: center;
     text-align: center;
     margin-top: 50px;
+    gap: 100px;
 }
 
 .counter {
     display: flex;
-    border: 2px solid #b8eaf1;
+    border: 1px solid #0bd1fc;
     border-radius: 5px;
-    background-color: #6ac6e7;
-    padding: 20px;
+    background-color: #1d273b;
+    padding: 10px;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
 }
 
 
 .activeButton {
-    background-color: #0d698a;
-    border: 2px solid #b8eaf1;
+    background-color: #0bd1fc;
     border-radius: 5px;
-    color: white;
+    border: none;
+    color: #1d273b;
     font-size: 25px;
+    font-weight: bold;
 
     &:hover {
         cursor: pointer;
@@ -31,46 +36,60 @@ body {
 }
 
 div {
-  font-size: 35px;
-  color: white;
+  font-size: 40px;
+  color: #0bd1fc;
 }
 
 .counter-style {
     color: red;
-    font-size: 35px;
 }
 
 .disabledButton {
     opacity: 0.5;
     background-color: #0d698a;
-    border: 2px solid #b8eaf1;
     border-radius: 5px;
-    color: white;
+    border: none;
+    color: #1d273b;
     font-size: 25px;
+    font-weight: bold;
 
     &:hover {
         cursor: not-allowed;
     }
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
 .btn-wrapper {
     display: flex;
+    justify-content: center;
     gap: 20px;
-    background-color: #1486af;
+    background-color: #1d273b;
     padding: 20px;
-    border: 2px solid #b8eaf1;
+    border: 1px solid #0bd1fc;
     border-radius: 5px;
 }
 
 .counter-wrapper {
-    background-color: #1486af;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #1d273b;
     padding: 10px;
-    border: 2px solid #b8eaf1;
+    border: 1px solid #0bd1fc;
+    border-radius: 5px;
+    font-weight: bold;
+    height: 90px;
+}
+
+.value-wrapper {
+    display: flex;
+    gap: 50px;
+
+}
+
+input {
+    width: 100px;
+    height: 15px;
+    border: 2px solid #0bd1fc;
     border-radius: 5px;
 }
