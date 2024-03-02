@@ -14,8 +14,8 @@ export const Counter = ({
                             setMaxValue
                         }: CounterType) => {
 
-    const disabledButtonReset = counter === minValue;
-    const disabledButtonInc = counter === maxValue;
+    const disabledButtonReset = counter === startValue;
+    const disabledButtonInc = counter === maxInputValue;
     const incorrectValue = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
 
     return (
@@ -23,13 +23,13 @@ export const Counter = ({
             <div className={'counter-wrapper'}>
                 <span className={counter === maxInputValue ? 'counter-style' : '#0bd1fc'}>
                     <div className={incorrectValue ? 'incorrectValue' : ''}>
-                        {incorrectValue ? 'Incorrect value!' : counter = startValue}
+                        {incorrectValue ? 'Incorrect value!' : counter}
                     </div>
                 </span>
             </div>
             <div className={'btn-wrapper'}>
                 <Button
-                    callBack={() => getIncreaseCounter(counter)}
+                    callBack={getIncreaseCounter}
                     isDisabled={disabledButtonInc}
                     className={disabledButtonInc ? 'disabledButton' : 'activeButton'}
                     title={'inc'}

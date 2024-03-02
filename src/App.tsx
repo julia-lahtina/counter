@@ -4,7 +4,7 @@ import {Counter} from './components/Counter';
 import {SetCounter} from './components/SetCounter';
 
 export type CounterType = {
-    getIncreaseCounter: (counter: number) => void
+    getIncreaseCounter: () => void
     getResetCounter: () => void
     counter: number
     minValue: number
@@ -47,9 +47,8 @@ function App() {
     }
 
 
-    const getIncreaseCounter = (counter: number) => {
+    const getIncreaseCounter = () => {
         setCounter(counter + 1)
-        console.log(counter)
         }
 
     const getResetCounter = () => {
