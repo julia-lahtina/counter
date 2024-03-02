@@ -1,29 +1,41 @@
 import React from 'react';
 import {CounterType} from '../App';
 import {Button} from './Button';
+import {Input} from './Input';
 
-export const SetCounter = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue}: CounterType) => {
+export const SetCounter = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue, startValue, maxInputValue, setMaxValue, setStartValue, setValues}: CounterType) => {
 
-    const disabledButtonReset = counter === minValue;
-    const disabledButtonInc = counter === maxValue;
+    const disabledButtonSet = counter === startValue || startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
+    const negativNumberStartValue = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
+    const negativNumberMaxValue = maxInputValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
+
+
 
     return (
         <div className={'counter'}>
             <div className={'counter-wrapper'}>
                 <div className={'value-wrapper'}>
                     <span style={{fontSize: '20px'}}>max value: </span>
-                    <input type="number"/>
+                    <Input
+                        newInputValue={maxInputValue}
+                        setNewInputValue={setMaxValue}
+                        className={negativNumberMaxValue ? 'negativ-number-input' : 'input'}
+                    />
                 </div>
                 <div className={'value-wrapper'}>
                     <span style={{fontSize: '20px'}}>start value: </span>
-                    <input type="number"/>
+                    <Input
+                        newInputValue={startValue}
+                        setNewInputValue={setStartValue}
+                        className={negativNumberStartValue ? 'negativ-number-input' : 'input'}
+                    />
                 </div>
             </div>
             <div className={'btn-wrapper'}>
                 <Button
-                    callBack={() => getIncreaseCounter(counter)}
-                    isDisabled={disabledButtonInc}
-                    className={disabledButtonInc ? 'disabledButton' : 'activeButton'}
+                    callBack={setValues}
+                    isDisabled={disabledButtonSet}
+                    className={disabledButtonSet ? 'disabledButton' : 'activeButton'}
                     title={'set'}
                 />
             </div>

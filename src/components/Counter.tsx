@@ -2,15 +2,30 @@ import React from 'react';
 import {Button} from './Button';
 import {CounterType} from '../App';
 
-export const Counter = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue}: CounterType) => {
+export const Counter = ({
+                            getResetCounter,
+                            getIncreaseCounter,
+                            counter,
+                            maxValue,
+                            minValue,
+                            maxInputValue,
+                            startValue,
+                            setStartValue,
+                            setMaxValue
+                        }: CounterType) => {
 
     const disabledButtonReset = counter === minValue;
     const disabledButtonInc = counter === maxValue;
+    const incorrectValue = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
 
     return (
         <div className={'counter'}>
             <div className={'counter-wrapper'}>
-                <span className={counter === maxValue ? 'counter-style' : 'white'}>{counter}</span>
+                <span className={counter === maxInputValue ? 'counter-style' : '#0bd1fc'}>
+                    <div className={incorrectValue ? 'incorrectValue' : ''}>
+                        {incorrectValue ? 'Incorrect value!' : counter = startValue}
+                    </div>
+                </span>
             </div>
             <div className={'btn-wrapper'}>
                 <Button
