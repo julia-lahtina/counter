@@ -11,19 +11,22 @@ export const Counter = ({
                             maxInputValue,
                             startValue,
                             setStartValue,
-                            setMaxValue
+                            setMaxValue,
+                            isFocused,
+                            setIsFocused
                         }: CounterType) => {
 
-    const disabledButtonReset = counter === startValue;
-    const disabledButtonInc = counter === maxInputValue;
+    const disabledButtonReset = counter === startValue || isFocused;
+    const disabledButtonInc = counter === maxInputValue || isFocused;
     const incorrectValue = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
 
     return (
         <div className={'counter'}>
             <div className={'counter-wrapper'}>
                 <span className={counter === maxInputValue ? 'counter-style' : '#0bd1fc'}>
-                    <div className={incorrectValue ? 'incorrectValue' : ''}>
-                        {incorrectValue ? 'Incorrect value!' : counter}
+                    <div className={incorrectValue ? 'incorrectValue' : isFocused ? 'focused' : ''}>
+                        {incorrectValue ? 'Incorrect value!' : isFocused ? 'enter values and press "set"' : counter}
+
                     </div>
                 </span>
             </div>

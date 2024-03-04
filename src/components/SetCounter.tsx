@@ -3,7 +3,7 @@ import {CounterType} from '../App';
 import {Button} from './Button';
 import {Input} from './Input';
 
-export const SetCounter = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue, startValue, maxInputValue, setMaxValue, setStartValue, setValues}: CounterType) => {
+export const SetCounter = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue, startValue, maxInputValue, setMaxValue, setStartValue, setValues, setIsFocused, isFocused}: CounterType) => {
 
     const disabledButtonSet = counter === startValue || startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
     const negativNumberStartValue = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
@@ -19,6 +19,8 @@ export const SetCounter = ({getResetCounter, getIncreaseCounter, counter, maxVal
                     <Input
                         newInputValue={maxInputValue}
                         setNewInputValue={setMaxValue}
+                        isFocused={isFocused}
+                        setIsFocused={setIsFocused}
                         className={negativNumberMaxValue ? 'negativ-number-input' : 'input'}
                     />
                 </div>
@@ -27,6 +29,8 @@ export const SetCounter = ({getResetCounter, getIncreaseCounter, counter, maxVal
                     <Input
                         newInputValue={startValue}
                         setNewInputValue={setStartValue}
+                        isFocused={isFocused}
+                        setIsFocused={setIsFocused}
                         className={negativNumberStartValue ? 'negativ-number-input' : 'input'}
                     />
                 </div>
