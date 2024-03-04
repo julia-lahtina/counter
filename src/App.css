@@ -46,6 +46,11 @@ div {
     font-size: 20px;
 }
 
+.focused {
+    color: #0bd1fc;
+    font-size: 20px;
+}
+
 
 .disabledButton {
     opacity: 0.5;
