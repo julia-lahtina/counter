@@ -14,6 +14,8 @@ export type CounterType = {
     setMaxValue: (maxInputValue: number) => void
     setStartValue: (startValue: number) => void
     setValues: () => void
+    isFocused: boolean
+    setIsFocused: (isFocused: boolean) => void
 }
 
 
@@ -25,6 +27,7 @@ function App() {
     const [maxInputValue, setMaxValue] = useState<number>(maxValue)
     const [startValue, setStartValue] = useState<number>(minValue)
     const [counter, setCounter] = useState(startValue)
+    const [isFocused, setIsFocused] = useState<boolean>(false)
 
 
     useEffect(() => {
@@ -35,6 +38,7 @@ function App() {
         }
     }, []);
 
+
     useEffect(() => {
         localStorage.setItem('max value', JSON.stringify(maxInputValue));
         localStorage.setItem('start value', JSON.stringify(startValue));
@@ -42,8 +46,8 @@ function App() {
 
 
     const setValues = () => {
-        setStartValue(startValue)
-        setMaxValue(maxInputValue)
+        setCounter(startValue)
+       // setMaxValue(maxInputValue)
     }
 
 
@@ -72,6 +76,8 @@ function App() {
                 setMaxValue={setMaxValue}
                 setStartValue={setStartValue}
                 setValues={setValues}
+                isFocused={isFocused}
+                setIsFocused={setIsFocused}
             />
 
             <Counter
@@ -85,6 +91,8 @@ function App() {
                 setStartValue={setStartValue}
                 setMaxValue={setMaxValue}
                 setValues={setValues}
+                isFocused={isFocused}
+                setIsFocused={setIsFocused}
             />
 
         </div>
