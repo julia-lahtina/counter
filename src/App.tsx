@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import {Counter} from './components/Counter';
-import {SetCounter} from './components/SetCounter';
+import {Settings} from './components/Settings';
 
 export type CounterType = {
     getIncreaseCounter: () => void
@@ -63,7 +63,7 @@ function App() {
     return (
         <div className="App">
 
-            <SetCounter
+            <Settings
                 getIncreaseCounter={() => {
                 }}
                 getResetCounter={() => {

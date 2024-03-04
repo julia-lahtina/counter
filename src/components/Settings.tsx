@@ -3,7 +3,7 @@ import {CounterType} from '../App';
 import {Button} from './Button';
 import {Input} from './Input';
 
-export const SetCounter = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue, startValue, maxInputValue, setMaxValue, setStartValue, setValues, setIsFocused, isFocused}: CounterType) => {
+export const Settings = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue, startValue, maxInputValue, setMaxValue, setStartValue, setValues, setIsFocused, isFocused}: CounterType) => {
 
     const disabledButtonSet = counter === startValue || startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
     const negativNumberStartValue = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
