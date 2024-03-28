@@ -1,0 +1,41 @@
+.buttonWrapper {
+    border: 1px solid #0bd1fc;
+    border-radius: 5px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.activeButton {
+    background-color: #0bd1fc;
+    border: none;
+    border-radius: 5px;
+    width: 65px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1d273b;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.disabledButton {
+    background-color: #0bd1fc;
+    border: none;
+    border-radius: 5px;
+    width: 65px;
+    height: 30px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #1d273b;
+
+    &:hover {
+        cursor: not-allowed;
+    }
+
+    opacity: 0.4;
+}

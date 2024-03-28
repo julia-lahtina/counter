@@ -1,0 +1,25 @@
+.input {
+    width: 90px;
+    height: 20px;
+    text-align: center;
+    border: 2px solid #0bd1fc;
+    border-radius: 5px;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.errorInput {
+    width: 90px;
+    height: 20px;
+    text-align: center;
+    color: red;
+    background-color: #f38484;
+    border: 2px solid red;
+    border-radius: 5px;
+
+    &:focus {
+        outline: none;
+    }
+}

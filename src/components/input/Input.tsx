@@ -14,7 +14,6 @@ export const Input = (props: InputType) => {
     }
 
 
-
     return (
         <input className={props.className} value={props.newInputValue} onChange={onChangeInputHandler}
                type="number"/>

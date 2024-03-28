@@ -1,0 +1,20 @@
+.valuesWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    border: 1px solid #0bd1fc;
+    border-radius: 5px;
+    padding: 10px;
+    height: 100px;
+}
+
+.maxValueWrapper,
+.startValueWrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    color: #0bd1fc;
+    font-size: 20px;
+    font-weight: 700;
+}

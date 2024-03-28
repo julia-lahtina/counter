@@ -1,0 +1,15 @@
+.counterWrapper {
+    border: 1px solid #0bd1fc;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+}
+
+.span {
+    color: #0bd1fc;
+    font-size: 30px;
+    font-weight: 700;
+}

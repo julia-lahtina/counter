@@ -1,0 +1,16 @@
+.displayWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    border: 1px solid #0bd1fc;
+    border-radius: 5px;
+    padding: 10px;
+    height: 100px;
+}
+
+.incorrectValue {
+    color: red;
+    font-weight: 700;
+    font-size: 30px;
+}

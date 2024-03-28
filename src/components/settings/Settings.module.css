@@ -1,0 +1,12 @@
+.settingsMainWrapper {
+    border: 1px solid #0bd1fc;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+}
+
+
+
