@@ -1,32 +1,34 @@
 import React from 'react';
 import {Button} from './Button';
-import {CounterType} from '../App';
+
+
+type CounterPropsType = {
+    getIncreaseCounter: () => void
+    getResetCounter: () => void
+    counter: number
+    maxInputValue: number
+    startValue: number
+}
 
 export const Counter = ({
                             getResetCounter,
                             getIncreaseCounter,
                             counter,
-                            maxValue,
-                            minValue,
                             maxInputValue,
                             startValue,
-                            setStartValue,
-                            setMaxValue,
-                            isFocused,
-                            setIsFocused
-                        }: CounterType) => {
+                        }: CounterPropsType) => {
 
-    const disabledButtonReset = counter === startValue || isFocused;
-    const disabledButtonInc = counter === maxInputValue || isFocused;
+    const disabledButtonReset = counter === startValue;
+    const disabledButtonInc = counter === maxInputValue;
     const incorrectValue = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
+
 
     return (
         <div className={'counter'}>
             <div className={'counter-wrapper'}>
-                <span className={counter === maxInputValue ? 'counter-style' : '#0bd1fc'}>
-                    <div className={incorrectValue ? 'incorrectValue' : isFocused ? 'focused' : ''}>
-                        {incorrectValue ? 'Incorrect value!' : isFocused ? 'enter values and press "set"' : counter}
-
+                <span>
+                    <div className={incorrectValue ? 'incorrectValue' : ''}>
+                        {incorrectValue ? 'Incorrect value!' : counter}
                     </div>
                 </span>
             </div>

@@ -40,7 +40,11 @@ div {
     color: #0bd1fc;
 }
 
-.counter-style,
+.counterStyle {
+    color: red;
+    font-size: 40px;
+}
+
 .incorrectValue {
     color: red;
     font-size: 20px;

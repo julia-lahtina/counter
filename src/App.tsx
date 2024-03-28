@@ -3,20 +3,6 @@ import './App.css';
 import {Counter} from './components/Counter';
 import {Settings} from './components/Settings';
 
-export type CounterType = {
-    getIncreaseCounter: () => void
-    getResetCounter: () => void
-    counter: number
-    minValue: number
-    maxValue: number
-    maxInputValue: number
-    startValue: number
-    setMaxValue: (maxInputValue: number) => void
-    setStartValue: (startValue: number) => void
-    setValues: () => void
-    isFocused: boolean
-    setIsFocused: (isFocused: boolean) => void
-}
 
 
 function App() {
@@ -27,16 +13,7 @@ function App() {
     const [maxInputValue, setMaxValue] = useState<number>(maxValue)
     const [startValue, setStartValue] = useState<number>(minValue)
     const [counter, setCounter] = useState(startValue)
-    const [isFocused, setIsFocused] = useState<boolean>(false)
 
-
-    useEffect(() => {
-        let startValueAsString = localStorage.getItem('start value');
-        if (startValueAsString) {
-            let newStartValue = JSON.parse(startValueAsString);
-            setStartValue(newStartValue)
-        }
-    }, []);
 
 
     useEffect(() => {
@@ -45,9 +22,9 @@ function App() {
     }, [maxInputValue, startValue])
 
 
+
     const setValues = () => {
         setCounter(startValue)
-       // setMaxValue(maxInputValue)
     }
 
 
@@ -64,35 +41,20 @@ function App() {
         <div className="App">
 
             <Settings
-                getIncreaseCounter={() => {
-                }}
-                getResetCounter={() => {
-                }}
                 counter={counter}
-                minValue={minValue}
-                maxValue={maxValue}
                 maxInputValue={maxInputValue}
                 startValue={startValue}
                 setMaxValue={setMaxValue}
                 setStartValue={setStartValue}
                 setValues={setValues}
-                isFocused={isFocused}
-                setIsFocused={setIsFocused}
             />
 
             <Counter
                 getIncreaseCounter={getIncreaseCounter}
                 getResetCounter={getResetCounter}
                 counter={counter}
-                maxValue={maxValue}
-                minValue={minValue}
                 maxInputValue={maxInputValue}
                 startValue={startValue}
-                setStartValue={setStartValue}
-                setMaxValue={setMaxValue}
-                setValues={setValues}
-                isFocused={isFocused}
-                setIsFocused={setIsFocused}
             />
 
         </div>

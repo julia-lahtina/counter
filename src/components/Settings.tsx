@@ -1,14 +1,28 @@
 import React from 'react';
-import {CounterType} from '../App';
 import {Button} from './Button';
 import {Input} from './Input';
 
-export const Settings = ({getResetCounter, getIncreaseCounter, counter, maxValue, minValue, startValue, maxInputValue, setMaxValue, setStartValue, setValues, setIsFocused, isFocused}: CounterType) => {
 
-    const disabledButtonSet = counter === startValue || startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
+type SettingsPropsType = {
+    counter: number
+    maxInputValue: number
+    startValue: number
+    setMaxValue: (maxValue: number) => void
+    setStartValue: (minValue: number) => void
+    setValues: () => void
+}
+export const Settings = ({
+                             counter,
+                             startValue,
+                             maxInputValue,
+                             setMaxValue,
+                             setStartValue,
+                             setValues,
+                         }: SettingsPropsType) => {
+
+    const disabledButtonSet = counter===startValue|| startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
     const negativNumberStartValue = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
     const negativNumberMaxValue = maxInputValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
-
 
 
     return (
@@ -19,8 +33,6 @@ export const Settings = ({getResetCounter, getIncreaseCounter, counter, maxValue
                     <Input
                         newInputValue={maxInputValue}
                         setNewInputValue={setMaxValue}
-                        isFocused={isFocused}
-                        setIsFocused={setIsFocused}
                         className={negativNumberMaxValue ? 'negativ-number-input' : 'input'}
                     />
                 </div>
@@ -29,8 +41,6 @@ export const Settings = ({getResetCounter, getIncreaseCounter, counter, maxValue
                     <Input
                         newInputValue={startValue}
                         setNewInputValue={setStartValue}
-                        isFocused={isFocused}
-                        setIsFocused={setIsFocused}
                         className={negativNumberStartValue ? 'negativ-number-input' : 'input'}
                     />
                 </div>
