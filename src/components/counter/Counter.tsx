@@ -2,6 +2,7 @@ import React from 'react';
 import s from './Counter.module.css'
 import {CounterButtons} from './counterButtons/CounterButtons';
 import {CounterDisplay} from './counterDisplay/CounterDisplay';
+import {SavedValuesType} from '../../App';
 
 
 type CounterPropsType = {
@@ -10,6 +11,10 @@ type CounterPropsType = {
     counter: number
     maxInputValue: number
     startValue: number
+    savedMaxValue: number
+    savedStartValue: number
+    savedCounter: number
+    savedValues: SavedValuesType
 }
 
 export const Counter = ({
@@ -18,6 +23,9 @@ export const Counter = ({
                             counter,
                             maxInputValue,
                             startValue,
+                            savedMaxValue,
+                            savedStartValue,
+                            savedValues
                         }: CounterPropsType) => {
 
 
@@ -27,6 +35,7 @@ export const Counter = ({
                 startValue={startValue}
                 maxInputValue={maxInputValue}
                 counter={counter}
+                savedValues={savedValues}
             />
             <CounterButtons
                 counter={counter}
@@ -34,6 +43,9 @@ export const Counter = ({
                 maxInputValue={maxInputValue}
                 getResetCounter={getResetCounter}
                 getIncreaseCounter={getIncreaseCounter}
+                savedMaxValue={savedMaxValue}
+                savedStartValue={savedStartValue}
+                savedValues={savedValues}
             />
         </div>
     );

@@ -6,7 +6,6 @@ import {SettingsValues} from './settingsValues/SettingsValues';
 
 
 type SettingsPropsType = {
-    counter: number
     maxInputValue: number
     startValue: number
     setMaxValue: (maxValue: number) => void
@@ -14,15 +13,14 @@ type SettingsPropsType = {
     setValues: () => void
 }
 export const Settings = ({
-                             counter,
                              startValue,
                              maxInputValue,
                              setMaxValue,
                              setStartValue,
-                             setValues,
+                             setValues
                          }: SettingsPropsType) => {
 
-    const disabledButtonSet = counter === startValue || startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
+    const disabledButtonSet = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
 
     return (
         <div className={s1.settingsMainWrapper}>

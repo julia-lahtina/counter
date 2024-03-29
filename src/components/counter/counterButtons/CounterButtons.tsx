@@ -2,6 +2,7 @@
 import * as React from 'react';
 import {Button} from '../../button/Button';
 import s from '../../button/Button.module.css'
+import {SavedValuesType} from '../../../App';
 
 
 type CounterButtonsPropsType = {
@@ -10,11 +11,23 @@ type CounterButtonsPropsType = {
     counter: number
     maxInputValue: number
     startValue: number
+    savedMaxValue: number
+    savedStartValue: number
+    savedValues: SavedValuesType
 };
-export const CounterButtons = ({getResetCounter, getIncreaseCounter, counter, maxInputValue, startValue}: CounterButtonsPropsType) => {
+export const CounterButtons = ({
+                                   getResetCounter,
+                                   getIncreaseCounter,
+                                   counter,
+                                   maxInputValue,
+                                   startValue,
+                                   savedStartValue,
+                                   savedMaxValue,
+                                   savedValues
+                               }: CounterButtonsPropsType) => {
 
-    const disabledButtonReset = counter === startValue || startValue < 0;
-    const disabledButtonInc = counter === maxInputValue || startValue < 0;
+    const disabledButtonReset = startValue < 0 || savedValues.savedMaxValue !== maxInputValue || savedValues.savedStartValue !== startValue;
+    const disabledButtonInc = counter === maxInputValue || startValue < 0 || savedValues.savedMaxValue !== maxInputValue || savedValues.savedStartValue !== startValue;
 
     return (
         <div className={s.buttonWrapper}>
