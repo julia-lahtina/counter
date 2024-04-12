@@ -2,7 +2,12 @@ import React, {useEffect, useReducer, useState} from 'react';
 import './App.css';
 import {Counter} from './components/counter/Counter';
 import {Settings} from './components/settings/Settings';
-import {counterReducer, getIncreaseCounterCreator, startValueCreator} from './redux/counterReducer';
+import {
+    counterReducer,
+    getIncreaseCounterCreator,
+    resertValueCreator,
+    setStartValueCreator
+} from './redux/counterReducer';
 
 export type SavedValuesType = { savedStartValue: number, savedMaxValue: number }
 
@@ -35,10 +40,10 @@ function App() {
         localStorage.setItem('max value', JSON.stringify(maxInputValue));
         localStorage.setItem('start value', JSON.stringify(startValue));
         setSavedValues({savedMaxValue: maxInputValue, savedStartValue: startValue})
-        dispatchCounter(startValueCreator(startValue))
+        dispatchCounter(setStartValueCreator(startValue))
     }
     const getResetCounter = () => {
-        dispatchCounter(startValueCreator(startValue))
+        dispatchCounter(resertValueCreator(startValue))
     }
 
     return (
