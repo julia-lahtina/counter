@@ -8,13 +8,17 @@ export const counterReducer = (state: number, action: ActionsTypes): number => {
             return state = action.startValue;
         }
 
+        case 'RESERT_VALUE': {
+            return state = action.startValue
+        }
+
         default:
             return state
     }
 }
 
 
-type ActionsTypes = GetIncreaseCounterCreatorType | StartValueCreatorType
+type ActionsTypes = GetIncreaseCounterCreatorType | StartValueCreatorType | resertValueCreatorType
 
 type GetIncreaseCounterCreatorType = ReturnType<typeof getIncreaseCounterCreator>
 export const getIncreaseCounterCreator = () => {
@@ -24,10 +28,19 @@ export const getIncreaseCounterCreator = () => {
 }
 
 
-type StartValueCreatorType = ReturnType<typeof startValueCreator>
-export const startValueCreator = (startValue: number) => {
+type StartValueCreatorType = ReturnType<typeof setStartValueCreator>
+export const setStartValueCreator = (startValue: number) => {
     return {
         type: 'START_VALUE',
+        startValue: startValue
+    } as const
+}
+
+
+type resertValueCreatorType = ReturnType<typeof resertValueCreator>
+export const resertValueCreator = (startValue: number) => {
+    return {
+        type: 'RESERT_VALUE',
         startValue: startValue
     } as const
 }
