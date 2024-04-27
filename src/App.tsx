@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useEffect, useReducer} from 'react';
 import './App.css';
 import {Counter} from './components/counter/Counter';
 import {Settings} from './components/settings/Settings';
@@ -9,8 +9,8 @@ import {
     setStartValueCreator
 } from './redux/counterReducer';
 import {savedValuesReducer, setValuesCreator} from './redux/savedValuesReducer';
-import {maxInputValueReducer} from './redux/maxInputValueReducer';
-import {startInputValueReducer} from './redux/startInputValueReducer';
+import {inputValueReducer} from './redux/InputValueReducer';
+
 
 export type SavedValuesType = { savedStartValue: number, savedMaxValue: number }
 
@@ -23,9 +23,9 @@ function App() {
 
     const [savedValues, dispatchSavedValues] = useReducer(savedValuesReducer,{savedStartValue, savedMaxValue})
 
-    const [maxInputValue, dispatchMaxValue] = useReducer(maxInputValueReducer, savedValues.savedMaxValue)
+    const [maxInputValue, dispatchMaxValue] = useReducer(inputValueReducer, savedValues.savedMaxValue)
 
-    const [startValue, dispatchStartValue] = useReducer(startInputValueReducer, savedValues.savedStartValue)
+    const [startValue, dispatchStartValue] = useReducer(inputValueReducer, savedValues.savedStartValue)
 
     const [counter, dispatchCounter] = useReducer(counterReducer, savedCounter)
 

@@ -3,13 +3,14 @@ import * as React from 'react';
 import s1 from '../SettingsValues.module.css';
 import s2 from '../../../input/Input.module.css';
 import {Input} from '../../../input/Input';
-import {startValueCreatorType} from '../../../../redux/startInputValueReducer';
+import {ActionCreatorsType} from '../../../../redux/InputValueReducer';
+
 
 
 type StartValuePropsType = {
     maxInputValue: number
     startValue: number
-    dispatchStartValue: (minValue: startValueCreatorType) => void
+    dispatchStartValue: (minValue: ActionCreatorsType) => void
 };
 
 export const StartValue = ({maxInputValue, startValue, dispatchStartValue}: StartValuePropsType) => {
@@ -22,7 +23,7 @@ export const StartValue = ({maxInputValue, startValue, dispatchStartValue}: Star
             <span>start value: </span>
             <Input
                 newInputValue={startValue}
-                dispatchMaxValue={dispatchStartValue}
+                setNewInputValue={dispatchStartValue}
                 className={errorStartValue ? s2.errorInput : s2.input}
             />
         </div>
