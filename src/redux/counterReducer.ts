@@ -1,4 +1,7 @@
-export const counterReducer = (state: number, action: ActionsTypes): number => {
+
+const savedCounter = +JSON.parse(localStorage.getItem('counter') || '0');
+const initialState = savedCounter;
+export const counterReducer = (state: number = initialState, action: ActionsTypes): number => {
     switch (action.type) {
         case 'INCREASE_COUNTER': {
             return state + 1;

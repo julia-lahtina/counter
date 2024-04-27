@@ -11,8 +11,6 @@ type CounterButtonsPropsType = {
     counter: number
     maxInputValue: number
     startValue: number
-    savedMaxValue: number
-    savedStartValue: number
     savedValues: SavedValuesType
 };
 export const CounterButtons = ({
@@ -21,8 +19,6 @@ export const CounterButtons = ({
                                    counter,
                                    maxInputValue,
                                    startValue,
-                                   savedStartValue,
-                                   savedMaxValue,
                                    savedValues
                                }: CounterButtonsPropsType) => {
 

@@ -1,33 +1,28 @@
-import React, {useEffect, useReducer} from 'react';
+import React, {useEffect} from 'react';
 import './App.css';
 import {Counter} from './components/counter/Counter';
 import {Settings} from './components/settings/Settings';
 import {
-    counterReducer,
     getIncreaseCounterCreator,
     resertValueCreator,
     setStartValueCreator
 } from './redux/counterReducer';
-import {savedValuesReducer, setValuesCreator} from './redux/savedValuesReducer';
-import {inputValueReducer} from './redux/InputValueReducer';
+import {setValuesCreator} from './redux/savedValuesReducer';
+import {useDispatch, useSelector} from 'react-redux';
+import {AppRootStateType} from './redux/store';
 
 
 export type SavedValuesType = { savedStartValue: number, savedMaxValue: number }
 
 
-const savedCounter = +JSON.parse(localStorage.getItem('counter') || '0');
-const savedMaxValue = +JSON.parse(localStorage.getItem('max value') || '5');
-const savedStartValue = +JSON.parse(localStorage.getItem('start value') || '0');
 
 function App() {
 
-    const [savedValues, dispatchSavedValues] = useReducer(savedValuesReducer,{savedStartValue, savedMaxValue})
-
-    const [maxInputValue, dispatchMaxValue] = useReducer(inputValueReducer, savedValues.savedMaxValue)
-
-    const [startValue, dispatchStartValue] = useReducer(inputValueReducer, savedValues.savedStartValue)
-
-    const [counter, dispatchCounter] = useReducer(counterReducer, savedCounter)
+    const savedValues = useSelector<AppRootStateType, SavedValuesType>(state => state.savedValues)
+    const maxInputValue = useSelector<AppRootStateType, number>(state => state.maxInputValue)
+    const minInputValue = useSelector<AppRootStateType, number>(state => state.minInputValue)
+    const counter = useSelector<AppRootStateType, number>(state => state.counter)
+    const dispatch = useDispatch()
 
 
     useEffect(() => {
@@ -36,16 +31,16 @@ function App() {
 
 
     const getIncreaseCounter = () => {
-        dispatchCounter(getIncreaseCounterCreator())
+        dispatch(getIncreaseCounterCreator())
     }
     const setValues = () => {
         localStorage.setItem('max value', JSON.stringify(maxInputValue));
-        localStorage.setItem('start value', JSON.stringify(startValue));
-        dispatchSavedValues(setValuesCreator(startValue, maxInputValue))
-        dispatchCounter(setStartValueCreator(startValue))
+        localStorage.setItem('start value', JSON.stringify(minInputValue));
+        dispatch(setValuesCreator(minInputValue, maxInputValue))
+        dispatch(setStartValueCreator(minInputValue))
     }
     const getResetCounter = () => {
-        dispatchCounter(resertValueCreator(startValue))
+        dispatch(resertValueCreator(minInputValue))
     }
 
     return (
@@ -53,10 +48,9 @@ function App() {
 
             <Settings
                 maxInputValue={maxInputValue}
-                startValue={startValue}
-                dispatchMaxValue={dispatchMaxValue}
-                dispatchStartValue={dispatchStartValue}
+                startValue={minInputValue}
                 setValues={setValues}
+                dispatch={dispatch}
             />
 
             <Counter
@@ -64,10 +58,7 @@ function App() {
                 getResetCounter={getResetCounter}
                 counter={counter}
                 maxInputValue={maxInputValue}
-                startValue={startValue}
-                savedMaxValue={savedMaxValue}
-                savedStartValue={savedStartValue}
-                savedCounter={savedCounter}
+                startValue={minInputValue}
                 savedValues={savedValues}
             />
 

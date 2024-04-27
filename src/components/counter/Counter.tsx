@@ -11,9 +11,6 @@ type CounterPropsType = {
     counter: number
     maxInputValue: number
     startValue: number
-    savedMaxValue: number
-    savedStartValue: number
-    savedCounter: number
     savedValues: SavedValuesType
 }
 
@@ -23,8 +20,6 @@ export const Counter = ({
                             counter,
                             maxInputValue,
                             startValue,
-                            savedMaxValue,
-                            savedStartValue,
                             savedValues
                         }: CounterPropsType) => {
 
@@ -43,8 +38,6 @@ export const Counter = ({
                 maxInputValue={maxInputValue}
                 getResetCounter={getResetCounter}
                 getIncreaseCounter={getIncreaseCounter}
-                savedMaxValue={savedMaxValue}
-                savedStartValue={savedStartValue}
                 savedValues={savedValues}
             />
         </div>
