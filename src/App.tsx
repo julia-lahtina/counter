@@ -19,8 +19,7 @@ const savedStartValue = +JSON.parse(localStorage.getItem('start value') || '0');
 
 function App() {
 
-
-    const [savedValues, dispatchSavedValues] = useReducer(savedValuesReducer,{savedMaxValue, savedStartValue})
+    const [savedValues, dispatchSavedValues] = useReducer(savedValuesReducer,{savedStartValue, savedMaxValue})
 
     const [maxInputValue, setMaxValue] = useState<number>(savedValues.savedMaxValue)
 
@@ -40,7 +39,7 @@ function App() {
     const setValues = () => {
         localStorage.setItem('max value', JSON.stringify(maxInputValue));
         localStorage.setItem('start value', JSON.stringify(startValue));
-        dispatchSavedValues(setValuesCreator(maxInputValue, startValue))
+        dispatchSavedValues(setValuesCreator(startValue, maxInputValue))
         dispatchCounter(setStartValueCreator(startValue))
     }
     const getResetCounter = () => {

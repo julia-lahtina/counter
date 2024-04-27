@@ -3,7 +3,7 @@ import {SavedValuesType} from '../App';
 export const savedValuesReducer = (state: SavedValuesType, action: setValuesCreatorType): SavedValuesType => {
     switch (action.type) {
         case 'MAX_START_VALUE':
-            return {savedMaxValue: action.savedMaxValue, savedStartValue: action.savedStartValue}
+            return {savedStartValue: action.savedStartValue, savedMaxValue: action.savedMaxValue}
         default:
             return state
     }
