@@ -8,6 +8,7 @@ import {
     resertValueCreator,
     setStartValueCreator
 } from './redux/counterReducer';
+import {savedValuesReducer, setValuesCreator} from './redux/savedValuesReducer';
 
 export type SavedValuesType = { savedStartValue: number, savedMaxValue: number }
 
@@ -19,7 +20,7 @@ const savedStartValue = +JSON.parse(localStorage.getItem('start value') || '0');
 function App() {
 
 
-    const [savedValues, setSavedValues] = useState<SavedValuesType>({savedMaxValue, savedStartValue})
+    const [savedValues, dispatchSavedValues] = useReducer(savedValuesReducer,{savedMaxValue, savedStartValue})
 
     const [maxInputValue, setMaxValue] = useState<number>(savedValues.savedMaxValue)
 
@@ -39,7 +40,7 @@ function App() {
     const setValues = () => {
         localStorage.setItem('max value', JSON.stringify(maxInputValue));
         localStorage.setItem('start value', JSON.stringify(startValue));
-        setSavedValues({savedMaxValue: maxInputValue, savedStartValue: startValue})
+        dispatchSavedValues(setValuesCreator(maxInputValue, startValue))
         dispatchCounter(setStartValueCreator(startValue))
     }
     const getResetCounter = () => {
