@@ -3,20 +3,22 @@ import {Button} from '../button/Button';
 import s1 from './Settings.module.css'
 import s2 from '../button/Button.module.css'
 import {SettingsValues} from './settingsValues/SettingsValues';
+import {maxValueCreatorType} from '../../redux/maxInputValueReducer';
+import {startValueCreatorType} from '../../redux/startInputValueReducer';
 
 
 type SettingsPropsType = {
     maxInputValue: number
     startValue: number
-    setMaxValue: (maxValue: number) => void
-    setStartValue: (minValue: number) => void
+    dispatchMaxValue: (maxValue: maxValueCreatorType) => void
+    dispatchStartValue: (minValue: startValueCreatorType) => void
     setValues: () => void
 }
 export const Settings = ({
                              startValue,
                              maxInputValue,
-                             setMaxValue,
-                             setStartValue,
+                             dispatchMaxValue,
+                             dispatchStartValue,
                              setValues
                          }: SettingsPropsType) => {
 
@@ -26,8 +28,8 @@ export const Settings = ({
         <div className={s1.settingsMainWrapper}>
 
                 <SettingsValues
-                    setMaxValue={setMaxValue}
-                    setStartValue={setStartValue}
+                    dispatchMaxValue={dispatchMaxValue}
+                    dispatchStartValue={dispatchStartValue}
                     startValue={startValue}
                     maxInputValue={maxInputValue}
                 />

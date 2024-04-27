@@ -3,14 +3,16 @@ import * as React from 'react';
 import s from './SettingsValues.module.css';
 import {MaxValue} from './maxValue/MaxValue';
 import {StartValue} from './minValue/StartValue';
+import {maxValueCreatorType} from '../../../redux/maxInputValueReducer';
+import {startValueCreatorType} from '../../../redux/startInputValueReducer';
 
 type SettingsValuePropsType = {
-    setMaxValue: (maxValue: number) => void
-    setStartValue: (minValue: number) => void
+    dispatchMaxValue: (maxValue: maxValueCreatorType) => void
+    dispatchStartValue: (minValue: startValueCreatorType) => void
     maxInputValue: number
     startValue: number
 }
-export const SettingsValues = ({startValue, setStartValue, setMaxValue, maxInputValue}: SettingsValuePropsType) => {
+export const SettingsValues = ({startValue, dispatchStartValue, dispatchMaxValue, maxInputValue}: SettingsValuePropsType) => {
 
 
     return (
@@ -18,12 +20,12 @@ export const SettingsValues = ({startValue, setStartValue, setMaxValue, maxInput
             <MaxValue
                 maxInputValue={maxInputValue}
                 startValue={startValue}
-                setMaxValue={setMaxValue}
+                dispatchMaxValue={dispatchMaxValue}
             />
             <StartValue
                 maxInputValue={maxInputValue}
                 startValue={startValue}
-                setStartValue={setStartValue}
+                dispatchStartValue={dispatchStartValue}
             />
         </div>
     )

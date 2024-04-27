@@ -9,6 +9,8 @@ import {
     setStartValueCreator
 } from './redux/counterReducer';
 import {savedValuesReducer, setValuesCreator} from './redux/savedValuesReducer';
+import {maxInputValueReducer} from './redux/maxInputValueReducer';
+import {startInputValueReducer} from './redux/startInputValueReducer';
 
 export type SavedValuesType = { savedStartValue: number, savedMaxValue: number }
 
@@ -21,9 +23,9 @@ function App() {
 
     const [savedValues, dispatchSavedValues] = useReducer(savedValuesReducer,{savedStartValue, savedMaxValue})
 
-    const [maxInputValue, setMaxValue] = useState<number>(savedValues.savedMaxValue)
+    const [maxInputValue, dispatchMaxValue] = useReducer(maxInputValueReducer, savedValues.savedMaxValue)
 
-    const [startValue, setStartValue] = useState<number>(savedValues.savedStartValue)
+    const [startValue, dispatchStartValue] = useReducer(startInputValueReducer, savedValues.savedStartValue)
 
     const [counter, dispatchCounter] = useReducer(counterReducer, savedCounter)
 
@@ -52,8 +54,8 @@ function App() {
             <Settings
                 maxInputValue={maxInputValue}
                 startValue={startValue}
-                setMaxValue={setMaxValue}
-                setStartValue={setStartValue}
+                dispatchMaxValue={dispatchMaxValue}
+                dispatchStartValue={dispatchStartValue}
                 setValues={setValues}
             />
 

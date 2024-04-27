@@ -1,8 +1,10 @@
 import React, {ChangeEvent, InputHTMLAttributes} from 'react';
+import {maxValueCreator, maxValueCreatorType} from '../../redux/maxInputValueReducer';
+import {startValueCreatorType} from '../../redux/startInputValueReducer';
 
 type InputType = {
     newInputValue: number
-    setNewInputValue: (newInputValue: number) => void
+    dispatchMaxValue: (maxValue: maxValueCreatorType) => void
 } & InputHTMLAttributes<HTMLInputElement>
 
 
@@ -10,7 +12,7 @@ export const Input = (props: InputType) => {
 
     const onChangeInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
         let currentValue = e.currentTarget.value;
-        props.setNewInputValue(JSON.parse(currentValue))
+        props.dispatchMaxValue(maxValueCreator(JSON.parse(currentValue)))
     }
 
 

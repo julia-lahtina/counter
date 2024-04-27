@@ -3,14 +3,15 @@ import * as React from 'react';
 import s1 from '../SettingsValues.module.css';
 import s2 from '../../../input/Input.module.css';
 import {Input} from '../../../input/Input';
+import {maxValueCreatorType} from '../../../../redux/maxInputValueReducer';
 
 type MaxValuePropsType = {
     maxInputValue: number
     startValue: number
-    setMaxValue: (maxValue: number) => void
+    dispatchMaxValue: (maxValue: maxValueCreatorType) => void
 };
 
-export const MaxValue = ({maxInputValue, startValue, setMaxValue}: MaxValuePropsType) => {
+export const MaxValue = ({maxInputValue, startValue, dispatchMaxValue}: MaxValuePropsType) => {
 
     const errorNumberMaxValue = maxInputValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
 
@@ -20,7 +21,7 @@ export const MaxValue = ({maxInputValue, startValue, setMaxValue}: MaxValueProps
             <span>max value: </span>
             <Input
                 newInputValue={maxInputValue}
-                setNewInputValue={setMaxValue}
+                dispatchMaxValue={dispatchMaxValue}
                 className={errorNumberMaxValue ? s2.errorInput : s2.input}
             />
         </div>
