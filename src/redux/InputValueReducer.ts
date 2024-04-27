@@ -1,7 +1,7 @@
 export const inputValueReducer = (state: number, action: ActionCreatorsType): number => {
     switch (action.type) {
         case 'INPUT_VALUE':
-            return state = action.value
+            return action.value
         default:
             return state
     }

@@ -5,11 +5,11 @@ export const counterReducer = (state: number, action: ActionsTypes): number => {
         }
 
         case 'START_VALUE': {
-            return state = action.startValue;
+            return action.startValue;
         }
 
         case 'RESERT_VALUE': {
-            return state = action.startValue
+            return action.startValue
         }
 
         default:
