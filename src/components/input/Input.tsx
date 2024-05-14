@@ -1,7 +1,7 @@
-import React, {ChangeEvent, InputHTMLAttributes} from 'react';
-import {maxValueCreator} from '../../redux/maxInputValueReducer';
-import {minValueCreator} from '../../redux/minInputValueReducer';
-import {Dispatch} from 'redux';
+import React, { ChangeEvent, InputHTMLAttributes } from 'react';
+import { maxValueCreator } from '../../redux/maxInputValueReducer';
+import { minValueCreator } from '../../redux/minInputValueReducer';
+import { Dispatch } from 'redux';
 
 
 type InputType = {
@@ -25,6 +25,6 @@ export const Input = (props: InputType) => {
 
     return (
         <input className={props.className} value={props.newInputValue} onChange={onChangeInputHandler}
-               type="number"/>
+            type="number" />
     );
 };

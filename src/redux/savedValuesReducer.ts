@@ -1,13 +1,11 @@
-import {SavedValuesType} from '../App';
+import { SavedValuesType } from '../App';
+import { loadState } from '../utils/localstorage-utils';
 
-const savedMaxValue = +JSON.parse(localStorage.getItem('max value') || '5');
-const savedStartValue = +JSON.parse(localStorage.getItem('start value') || '0');
-
-const initialValue = { savedStartValue: savedStartValue, savedMaxValue: savedMaxValue };
+const initialValue = { savedStartValue: loadState()?.minInputValue, savedMaxValue: loadState()?.maxInputValue };
 export const savedValuesReducer = (state: SavedValuesType = initialValue, action: setValuesCreatorType): SavedValuesType => {
     switch (action.type) {
         case 'MAX_START_VALUE':
-            return {savedStartValue: action.savedStartValue, savedMaxValue: action.savedMaxValue}
+            return { savedStartValue: action.savedStartValue, savedMaxValue: action.savedMaxValue }
         default:
             return state
     }

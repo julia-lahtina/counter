@@ -1,6 +1,6 @@
 
-const savedStartValue = +JSON.parse(localStorage.getItem('start value') || '0');
-const initialValue = savedStartValue;
+const initialValue = 0;
+
 export const minInputValueReducer = (state: number = initialValue, action: ActionCreatorsType): number => {
     switch (action.type) {
         case 'MIN_INPUT_VALUE':

@@ -1,15 +1,15 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import './App.css';
-import {Counter} from './components/counter/Counter';
-import {Settings} from './components/settings/Settings';
+import { Counter } from './components/counter/Counter';
+import { Settings } from './components/settings/Settings';
 import {
     getIncreaseCounterCreator,
     resertValueCreator,
     setStartValueCreator
 } from './redux/counterReducer';
-import {setValuesCreator} from './redux/savedValuesReducer';
-import {useDispatch, useSelector} from 'react-redux';
-import {AppRootStateType} from './redux/store';
+import { setValuesCreator } from './redux/savedValuesReducer';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppRootStateType } from './redux/store';
 
 
 export type SavedValuesType = { savedStartValue: number, savedMaxValue: number }
@@ -25,17 +25,11 @@ function App() {
     const dispatch = useDispatch()
 
 
-    useEffect(() => {
-        localStorage.setItem('counter', JSON.stringify(counter));
-    }, [counter])
-
 
     const getIncreaseCounter = () => {
         dispatch(getIncreaseCounterCreator())
     }
     const setValues = () => {
-        localStorage.setItem('max value', JSON.stringify(maxInputValue));
-        localStorage.setItem('start value', JSON.stringify(minInputValue));
         dispatch(setValuesCreator(minInputValue, maxInputValue))
         dispatch(setStartValueCreator(minInputValue))
     }

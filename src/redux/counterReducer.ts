@@ -1,13 +1,13 @@
 
-const savedCounter = +JSON.parse(localStorage.getItem('counter') || '0');
-const initialState = savedCounter;
+const initialState = 0;
+
 export const counterReducer = (state: number = initialState, action: ActionsTypes): number => {
     switch (action.type) {
         case 'INCREASE_COUNTER': {
             return state + 1;
         }
 
-        case 'START_VALUE': {
+        case 'SET_START_VALUE': {
             return action.startValue;
         }
 
@@ -34,7 +34,7 @@ export const getIncreaseCounterCreator = () => {
 type StartValueCreatorType = ReturnType<typeof setStartValueCreator>
 export const setStartValueCreator = (startValue: number) => {
     return {
-        type: 'START_VALUE',
+        type: 'SET_START_VALUE',
         startValue: startValue
     } as const
 }
