@@ -1,9 +1,9 @@
 import React from 'react';
-import {Button} from '../button/Button';
+import { Button } from '../button/Button';
 import s1 from './Settings.module.css'
 import s2 from '../button/Button.module.css'
-import {SettingsValues} from './settingsValues/SettingsValues';
-import {Dispatch} from 'redux';
+import { SettingsValues } from './settingsValues/SettingsValues';
+import { Dispatch } from 'redux';
 
 
 type SettingsPropsType = {
@@ -13,11 +13,11 @@ type SettingsPropsType = {
     dispatch: Dispatch
 }
 export const Settings = ({
-                             startValue,
-                             maxInputValue,
-                             setValues,
-                             dispatch
-                         }: SettingsPropsType) => {
+    startValue,
+    maxInputValue,
+    setValues,
+    dispatch
+}: SettingsPropsType) => {
 
     const disabledButtonSet = startValue < 0 || startValue === maxInputValue || startValue > maxInputValue;
 
