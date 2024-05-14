@@ -2,9 +2,9 @@ import { AppRootStateType } from "../redux/store";
 
 export const loadState = () => {
     try {
-        const serializedStateCounter = localStorage.getItem('counter' || 0);
-        const serializedStateMaxInputValue = localStorage.getItem('maxInputValue' || 5);
-        const serializedStateMinInputValue = localStorage.getItem('minInputValue' || 0);
+        const serializedStateCounter = localStorage.getItem('counter');
+        const serializedStateMaxInputValue = localStorage.getItem('maxInputValue');
+        const serializedStateMinInputValue = localStorage.getItem('minInputValue');
         if (serializedStateCounter === null || serializedStateMaxInputValue === null || serializedStateMinInputValue === null) {
             return undefined;
         }
