@@ -1,5 +1,5 @@
 
-const initialValue = 0;
+const initialValue = 5;
 
 export const maxInputValueReducer = (state: number = initialValue, action: ActionCreatorsType): number => {
     switch (action.type) {
